@@ -1,0 +1,42 @@
+---
+datadog:
+  apiKeyExistingSecret: datadog-agent
+  clusterName: kubernetes-sandbox
+  apm:
+    instrumentation:
+      enabled: true
+      targets:
+        - name: default-target
+          ddTraceVersions:
+            java: "1"
+            python: "3"
+            php: "1"
+            js: "5"
+            ruby: "2"
+            dotnet: "3"
+        - name: dev-python-namespace
+          namespaceSelector:
+            matchNames:
+              - payments-dev
+          podSelector:
+            matchLabels:
+              env: "development"
+        - name: java-service
+          podSelector:
+            matchLabels:
+              language: "java"
+          ddTraceVersions:
+            java: "default"
+  kubelet:
+    tlsVerify: false
+  kubeStateMetricsEnabled:
+    enabled: true
+  logs:
+    enabled: true
+    containerCollectAll: true
+  processAgent:
+    enabled: true
+    processCollection: true
+  systemProbe:
+    enableTCPQueueLength: false
+    collectDNSStats: false

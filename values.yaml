@@ -14,7 +14,7 @@ datadog:
             js: "5"
             ruby: "2"
             dotnet: "3"
-        - name: dev-python-namespace
+        - name: dev-payments-namespace-python
           namespaceSelector:
             matchNames:
               - payments-dev

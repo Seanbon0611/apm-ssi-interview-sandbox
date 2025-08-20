@@ -6,4 +6,4 @@ COPY app/ .
 
 RUN ./mvnw package -DskipTests 
 
-CMD java -jar target/spring-boot-0.0.1-SNAPSHOT.jar 
+CMD ["java", "-jar", "target/spring-boot-0.0.1-SNAPSHOT.jar"]

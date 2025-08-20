@@ -55,3 +55,20 @@ kubectl get pods
 # Generate traffic (replace <pod_name> with the actual pod name from the previous command)
 kubectl exec -it <pod_name> -- curl localhost:8080
 ```
+
+### Makefile Commands
+| Command          | Description                                                               |
+| ---------------- | ------------------------------------------------------------------------- |
+| `make build`     | Build the Docker image for the Java application.                          |
+| `make load`      | Load the built Docker image into the local Minikube cluster.              |
+| `make apply`     | Deploy the application to Kubernetes (requires `namespace`).              |
+| `make clean`     | Delete the application deployment from Kubernetes (requires `namespace`). |
+| `make deploy`    | Run build → load → apply in one step.                                     |
+| `make agent`     | Install the Datadog Agent using Helm and `values.yaml`.                   |
+| `make uninstall` | Uninstall the Datadog Agent from the cluster.                             |
+| `make exec`      | Open a bash shell inside the Java application container.                  |
+| `make tunnel`    | Forward local port 8080 to the application pod (requires `namespace`).    |
+| `make describe`  | Show detailed information about the Java application pod.                 |
+| `make logs`      | Stream logs from the application container.                               |
+
+*Note:* namespace can be specified by passing in a namespace parameter. Ex -  `make deploy namespace=value`

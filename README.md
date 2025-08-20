@@ -41,3 +41,16 @@ docker build -t python-app:latest ./python-app
 ```bash
 docker build -t java-app:latest ./java-app
 ```
+
+4. Running the applications:
+To run the application run the following commands:
+
+**For the Python application:**
+```bash
+kubectl apply -f python_deployment.yaml
+```
+
+**For the Java application:**
+```bash
+kubectl apply -f java_deployment.yaml
+```

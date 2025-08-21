@@ -30,12 +30,7 @@ Create datadog secret
 On minikube, first run `eval $(minikube -p minikube docker-env)` before building any images. This command configures your shell to use the Docker daemon inside the Minikube VM, so that any images you build are available directly to your Minikube Kubernetes cluster.
 
 3. Building the application images:
-We have two application images that need to be built. From the root directory of the project, run the following commands:
-
-**For the Python application:**
-```bash
-docker build -t python-app:latest ./python-app
-```
+We have one application image that need to be built. From the root directory of the project, run the following command:
 
 **For the Java application:**
 ```bash
@@ -43,14 +38,20 @@ docker build -t java-app:latest ./java-app
 ```
 
 4. Running the applications:
-To run the application run the following commands:
-
-**For the Python application:**
-```bash
-kubectl apply -f python_deployment.yaml
-```
+To deploy the application to your Kubernetes cluster, run the following command:
 
 **For the Java application:**
 ```bash
 kubectl apply -f java_deployment.yaml
+```
+
+5. Generating traffic:
+To generate traffic and test the application, first retrieve the pod name and then execute a curl request:
+
+```bash
+# Get the pod name
+kubectl get pods
+
+# Generate traffic (replace <pod_name> with the actual pod name from the previous command)
+kubectl exec -it <pod_name> -- curl localhost:8080
 ```

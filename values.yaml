@@ -14,13 +14,6 @@ datadog:
             js: "5"
             ruby: "2"
             dotnet: "3"
-        - name: dev-payments-namespace-python
-          namespaceSelector:
-            matchNames:
-              - payments-dev
-          podSelector:
-            matchLabels:
-              env: "development"
         - name: java-service
           podSelector:
             matchLabels:
